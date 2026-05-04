@@ -1131,6 +1131,88 @@
   .dash-export-item:hover { background:var(--hl-teal-light); color:var(--hl-teal); }
   .net-action-btn { flex:1; background:var(--hl-teal-light); color:var(--hl-teal); border:1.5px solid var(--hl-teal-mid); padding:10px 16px; border-radius:6px; font-size:12px; font-weight:700; cursor:pointer; font-family:'IBM Plex Sans',sans-serif; transition:all 0.15s; display:inline-flex; align-items:center; justify-content:center; gap:6px; white-space:nowrap; }
   .net-action-btn:hover { background:var(--hl-teal-mid); color:var(--hl-charcoal); }
+  /* ── RICH DASHBOARD CSS ── */
+  .dash-section-label { font-size:11px; font-weight:700; color:var(--epic-muted); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:10px; margin-top:4px; display:flex; align-items:center; gap:6px; }
+  .dash-kpi.highlight { border:2px solid var(--hl-teal); background:var(--hl-teal-light); }
+  .dk-val.teal { color:var(--hl-teal); }
+  .dk-val.warn-val { color:#92400e; }
+  .dash-source-row { display:flex; align-items:center; gap:8px; margin-bottom:5px; }
+  .src-tag { font-size:9px; font-weight:700; padding:2px 7px; border-radius:10px; white-space:nowrap; min-width:110px; text-align:center; }
+  .src-tag.screen { background:#dbeafe; color:#1e40af; }
+  .src-tag.provider { background:#dcfce7; color:#166534; }
+  .src-tag.patient { background:#fef3c7; color:#92400e; }
+  .src-bar-track { flex:1; height:10px; background:#f1f5f9; border-radius:5px; overflow:hidden; }
+  .src-bar-fill { height:100%; background:var(--hl-teal); border-radius:5px; }
+  .src-pct { font-size:10px; font-weight:700; color:var(--epic-text); min-width:28px; text-align:right; }
+  .dash-outcome-highlight { display:flex; gap:0; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:8px; overflow:hidden; margin-bottom:4px; }
+  .doh-stat { flex:1; padding:12px 14px; text-align:center; }
+  .doh-val { font-size:28px; font-weight:800; color:#166534; line-height:1; }
+  .doh-label { font-size:10px; color:#166534; margin-top:4px; line-height:1.4; }
+  .doh-divider { width:1px; background:#bbf7d0; flex-shrink:0; }
+  .survey-fill { background:#4A9B8E !important; }
+  .dash-survey-note { font-size:9px; color:var(--epic-muted); margin-top:8px; line-height:1.5; font-style:italic; }
+  .dash-flag-list { display:flex; flex-direction:column; gap:7px; }
+  .dash-flag-row { display:flex; align-items:flex-start; gap:10px; padding:8px 10px; border-radius:6px; border:1px solid transparent; }
+  .dash-flag-row.warn { background:#fffbeb; border-color:#fde68a; }
+  .dash-flag-row.alert { background:#fee2e2; border-color:#fca5a5; }
+  .dash-flag-row.ok { background:#f0fdf4; border-color:#bbf7d0; }
+  .dfr-icon { font-size:16px; flex-shrink:0; margin-top:1px; }
+  .dfr-body { flex:1; }
+  .dfr-title { font-size:11px; font-weight:700; color:var(--epic-text); margin-bottom:2px; }
+  .dfr-sub { font-size:10px; color:var(--epic-muted); }
+  .dfr-badge { font-size:9px; font-weight:700; padding:2px 7px; border-radius:10px; white-space:nowrap; flex-shrink:0; }
+  .dfr-badge.warn { background:#fef3c7; color:#92400e; }
+  .dfr-badge.alert { background:#fee2e2; color:#991b1b; }
+  .dfr-badge.ok { background:#dcfce7; color:#166534; }
+  .provider-table { width:100%; border-collapse:collapse; font-size:11px; }
+  .provider-table th { background:#f0f5fc; color:var(--epic-muted); font-size:9px; text-transform:uppercase; letter-spacing:0.04em; padding:6px 8px; text-align:left; border-bottom:1px solid var(--epic-border); }
+  .provider-table td { padding:7px 8px; border-bottom:1px solid #f1f5f9; color:var(--epic-text); vertical-align:middle; }
+  .mini-bar-wrap { display:flex; align-items:center; gap:5px; }
+  .mini-bar { height:8px; background:var(--hl-teal); border-radius:4px; }
+  .mini-bar-wrap span { font-size:10px; font-weight:700; color:var(--epic-text); }
+  .dash-trend-chart { display:flex; gap:20px; align-items:flex-end; padding:10px 0 6px; justify-content:center; }
+  .dtc-row { display:flex; flex-direction:column; align-items:center; gap:4px; }
+  .dtc-label { font-size:10px; color:var(--epic-muted); font-weight:600; }
+  .dtc-bars { display:flex; gap:4px; align-items:flex-end; }
+  .dtc-bar { width:20px; border-radius:3px 3px 0 0; }
+  .dtc-bar.identified { background:var(--hl-teal); opacity:0.45; }
+  .dtc-bar.referred { background:var(--hl-teal); }
+  .dtc-val { font-size:9px; color:var(--epic-muted); }
+  .dtc-legend { display:flex; gap:12px; justify-content:center; margin-top:8px; font-size:10px; color:var(--epic-muted); }
+  .dtc-leg-dot { display:inline-block; width:10px; height:10px; border-radius:2px; vertical-align:middle; margin-right:3px; }
+  .dtc-leg-dot.identified { background:var(--hl-teal); opacity:0.45; }
+  .dtc-leg-dot.referred { background:var(--hl-teal); }
+  .dash-outcome-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .dog-item { border-radius:8px; padding:10px 12px; }
+  .dog-item.green { background:#f0fdf4; border:1px solid #bbf7d0; }
+  .dog-item.teal { background:var(--hl-teal-light); border:1px solid var(--hl-teal-mid); }
+  .dog-item.yellow { background:#fffbeb; border:1px solid #fde68a; }
+  .dog-pct { font-size:20px; font-weight:800; color:var(--hl-teal); line-height:1.1; }
+  .dog-item.green .dog-pct { color:#166534; }
+  .dog-item.yellow .dog-pct { color:#92400e; }
+  .dog-label { font-size:10px; color:var(--epic-muted); margin-top:3px; line-height:1.4; }
+  .net-cov-row { display:flex; align-items:center; gap:8px; margin-bottom:4px; }
+  .net-cov-need { font-size:10px; color:var(--epic-muted); min-width:110px; }
+  .net-cov-count { font-size:10px; font-weight:700; color:var(--epic-text); min-width:56px; }
+  .net-cov-bar-wrap { flex:1; height:8px; background:#f1f5f9; border-radius:4px; overflow:hidden; }
+  .net-cov-bar { height:100%; background:var(--hl-teal); border-radius:4px; }
+  .rt-bucket { flex:1; text-align:center; padding:8px 6px; border-radius:8px; border:1px solid transparent; }
+  .rt-bucket.green { background:#f0fdf4; border-color:#bbf7d0; }
+  .rt-bucket.teal { background:var(--hl-teal-light); border-color:var(--hl-teal-mid); }
+  .rt-bucket.yellow { background:#fffbeb; border-color:#fde68a; }
+  .rt-bucket.red { background:#fee2e2; border-color:#fca5a5; }
+  .rt-val { font-size:20px; font-weight:800; color:var(--hl-teal); }
+  .rt-bucket.green .rt-val { color:#166534; }
+  .rt-bucket.yellow .rt-val { color:#92400e; }
+  .rt-bucket.red .rt-val { color:#991b1b; }
+  .rt-label { font-size:9px; color:var(--epic-muted); margin-top:3px; line-height:1.4; }
+  .qoq-row { display:flex; justify-content:space-between; align-items:center; padding:4px 0; border-bottom:1px solid #f1f5f9; }
+  .qoq-label { font-size:11px; color:var(--epic-muted); }
+  .qoq-val.up { color:#166534; font-weight:700; }
+  .qoq-val.warn { color:#92400e; font-weight:700; }
+  .trend-up { color:#166534; font-size:10px; font-weight:600; }
+  .trend-down { color:#991b1b; font-size:10px; font-weight:600; }
+  .trend-stable { color:#5a6a7e; font-size:10px; }
   .net-table th { background:#f0f5fc; color:var(--epic-muted); font-size:10px; text-transform:uppercase; letter-spacing:0.04em; padding:7px 10px; text-align:left; border-bottom:1px solid var(--epic-border); }
   .net-table td { padding:8px 10px; border-bottom:1px solid #f1f5f9; color:var(--epic-text); }
   .net-badge { display:inline-block; padding:2px 8px; border-radius:10px; font-size:10px; font-weight:700; }
@@ -2260,7 +2342,7 @@
       <!-- Main content -->
       <div style="flex:1; overflow-y:auto; padding:16px;">
 
-        <!-- Org Info -->
+        <!-- Org Info + Actions -->
         <div class="dash-org-row">
           <div class="dash-org-logo">✚<br><span>MRH</span></div>
           <div>
@@ -2271,32 +2353,35 @@
             <div class="dash-export-btn-wrap">
               <button class="dash-btn" onclick="toggleExport()">📥 Export ▾</button>
               <div class="dash-export-dd" id="dash-export-dd">
-                <div class="dash-export-item">📄 PDF Report</div>
-                <div class="dash-export-item">📊 Excel (.xlsx)</div>
-                <div class="dash-export-item">📋 CSV</div>
-                <div class="dash-export-item">🔗 JSON / API</div>
-                <div class="dash-export-item">📑 Word (.docx)</div>
+                <div class="dash-export-item" onclick="exportAction('PDF Report')">📄 PDF Report</div>
+                <div class="dash-export-item" onclick="exportAction('Excel (.xlsx)')">📊 Excel (.xlsx)</div>
+                <div class="dash-export-item" onclick="exportAction('CSV')">📋 CSV</div>
+                <div class="dash-export-item" onclick="exportAction('JSON / API Feed')">🔗 JSON / API Feed</div>
+                <div class="dash-export-item" onclick="exportAction('Word (.docx)')">📑 Word (.docx)</div>
               </div>
             </div>
             <button class="dash-btn secondary" onclick="openFeedback()">💬 Send Feedback</button>
           </div>
         </div>
 
-        <!-- KPI row -->
+        <!-- KPI row — top line -->
+        <div class="dash-section-label">📊 Population Health Overview</div>
         <div class="dash-kpi-row">
           <div class="dash-kpi"><div class="dk-val">247</div><div class="dk-label">Total Referrals Sent</div><div class="dk-trend up">↑ 18% vs Q4</div></div>
           <div class="dash-kpi"><div class="dk-val">189</div><div class="dk-label">Unique Patients</div><div class="dk-trend up">↑ 12%</div></div>
           <div class="dash-kpi"><div class="dk-val">74%</div><div class="dk-label">Resolution Rate</div><div class="dk-trend up">↑ 6pts</div></div>
-          <div class="dash-kpi"><div class="dk-val">38</div><div class="dk-label">Active Partners</div><div class="dk-trend">— Stable</div></div>
-          <div class="dash-kpi"><div class="dk-val">3.2d</div><div class="dk-label">Avg. Response Time</div><div class="dk-trend up">↓ 0.8d faster</div></div>
-          <div class="dash-kpi"><div class="dk-val">22</div><div class="dk-label">Pending Follow-Up</div><div class="dk-trend warn">↑ 4</div></div>
+          <div class="dash-kpi highlight"><div class="dk-val teal">83%</div><div class="dk-label">Patients Reporting Better Outcomes</div><div class="dk-trend up">↑ 9pts vs Q4</div></div>
+          <div class="dash-kpi"><div class="dk-val">3.2d</div><div class="dk-label">Avg. CBO Response Time</div><div class="dk-trend up">↓ 0.8d faster</div></div>
+          <div class="dash-kpi"><div class="dk-val warn-val">22</div><div class="dk-label">Pending Follow-Up</div><div class="dk-trend warn">↑ 4 · Action needed</div></div>
         </div>
 
+        <!-- Row 1: Need identification + Outcome survey -->
         <div class="dash-two-col">
-          <!-- Referrals by type -->
+
+          <!-- Needs identified by provider -->
           <div class="dash-card">
-            <div class="dash-card-title">Referrals by Need Type</div>
-            <div class="dash-bar-chart">
+            <div class="dash-card-title">🔍 Social Needs Identified — by Provider & Dept.</div>
+            <div class="dash-bar-chart" style="margin-bottom:10px;">
               <div class="dash-bar-row"><span class="dbr-label">🍎 Food Insecurity</span><div class="dbr-track"><div class="dbr-fill" style="width:82%"></div></div><span class="dbr-val">82</span></div>
               <div class="dash-bar-row"><span class="dbr-label">🚌 Transportation</span><div class="dbr-track"><div class="dbr-fill" style="width:61%"></div></div><span class="dbr-val">61</span></div>
               <div class="dash-bar-row"><span class="dbr-label">🏠 Housing</span><div class="dbr-track"><div class="dbr-fill" style="width:42%; background:#4A9B8E;"></div></div><span class="dbr-val">42</span></div>
@@ -2304,22 +2389,195 @@
               <div class="dash-bar-row"><span class="dbr-label">🧠 Mental Health</span><div class="dbr-track"><div class="dbr-fill" style="width:18%; background:#94b8b9;"></div></div><span class="dbr-val">18</span></div>
               <div class="dash-bar-row"><span class="dbr-label">👶 Childcare</span><div class="dbr-track"><div class="dbr-fill" style="width:13%; background:#b2cfcf;"></div></div><span class="dbr-val">13</span></div>
             </div>
+            <div style="border-top:1px solid var(--gray-200); padding-top:10px;">
+              <div class="dash-card-title" style="margin-bottom:8px;">Identification Source Breakdown</div>
+              <div class="dash-source-row"><span class="src-tag screen">📋 In-Visit Screener</span><div class="src-bar-track"><div class="src-bar-fill" style="width:64%;"></div></div><span class="src-pct">64%</span></div>
+              <div class="dash-source-row"><span class="src-tag provider">👩‍⚕️ Care Provider</span><div class="src-bar-track"><div class="src-bar-fill" style="width:24%; background:#4A9B8E;"></div></div><span class="src-pct">24%</span></div>
+              <div class="dash-source-row"><span class="src-tag patient">📱 Patient Self-Report</span><div class="src-bar-track"><div class="src-bar-fill" style="width:12%; background:#94b8b9;"></div></div><span class="src-pct">12%</span></div>
+            </div>
           </div>
-          <!-- Referral status -->
+
+          <!-- Outcome survey results -->
           <div class="dash-card">
-            <div class="dash-card-title">Referral Status Breakdown</div>
+            <div class="dash-card-title">⭐ Patient-Reported Outcome Survey — Post-Referral</div>
+            <div class="dash-outcome-highlight">
+              <div class="doh-stat"><div class="doh-val">83%</div><div class="doh-label">of patients completing the follow-up survey reported improved access to services</div></div>
+              <div class="doh-divider"></div>
+              <div class="doh-stat"><div class="doh-val">71%</div><div class="doh-label">reported reduced stress related to the identified social need</div></div>
+            </div>
+            <div class="dash-card-title" style="margin-top:12px; margin-bottom:8px;">Survey Completion Rate by Need Type</div>
+            <div class="dash-bar-chart">
+              <div class="dash-bar-row"><span class="dbr-label">🍎 Food</span><div class="dbr-track"><div class="dbr-fill survey-fill" style="width:78%"></div></div><span class="dbr-val">78%</span></div>
+              <div class="dash-bar-row"><span class="dbr-label">🚌 Transport</span><div class="dbr-track"><div class="dbr-fill survey-fill" style="width:65%"></div></div><span class="dbr-val">65%</span></div>
+              <div class="dash-bar-row"><span class="dbr-label">🏠 Housing</span><div class="dbr-track"><div class="dbr-fill survey-fill" style="width:51%"></div></div><span class="dbr-val">51%</span></div>
+              <div class="dash-bar-row"><span class="dbr-label">💊 Medication</span><div class="dbr-track"><div class="dbr-fill survey-fill" style="width:44%"></div></div><span class="dbr-val">44%</span></div>
+            </div>
+            <div class="dash-survey-note">📌 Survey response window: 30 days post-referral close · 142 of 189 patients responded (75% response rate)</div>
+          </div>
+        </div>
+
+        <!-- Row 2: Quality flags + Provider activity -->
+        <div class="dash-two-col">
+
+          <!-- Quality control flags -->
+          <div class="dash-card">
+            <div class="dash-card-title">⚠️ Quality & Compliance Flags</div>
+            <div class="dash-flag-list">
+              <div class="dash-flag-row warn">
+                <div class="dfr-icon">🔔</div>
+                <div class="dfr-body">
+                  <div class="dfr-title">22 referrals pending follow-up beyond 14-day SLA</div>
+                  <div class="dfr-sub">Departments: OB/GYN (8), Internal Med (7), Social Work (7)</div>
+                </div>
+                <span class="dfr-badge warn">Action</span>
+              </div>
+              <div class="dash-flag-row alert">
+                <div class="dfr-icon">🚨</div>
+                <div class="dfr-body">
+                  <div class="dfr-title">8 referrals marked non-responsive by CBO partners</div>
+                  <div class="dfr-sub">CTA Reduced Fare (4), Unassigned partner (4) · Review recommended</div>
+                </div>
+                <span class="dfr-badge alert">Review</span>
+              </div>
+              <div class="dash-flag-row ok">
+                <div class="dfr-icon">✅</div>
+                <div class="dfr-body">
+                  <div class="dfr-title">SDOH screening rate increased to 68% of eligible encounters</div>
+                  <div class="dfr-sub">Up from 54% last quarter · Target: 80%</div>
+                </div>
+                <span class="dfr-badge ok">Progress</span>
+              </div>
+              <div class="dash-flag-row ok">
+                <div class="dfr-icon">✅</div>
+                <div class="dfr-body">
+                  <div class="dfr-title">Closed-loop confirmation rate: 94% across active partners</div>
+                  <div class="dfr-sub">Industry benchmark: 70% · Midwest Regional is top quartile</div>
+                </div>
+                <span class="dfr-badge ok">Strong</span>
+              </div>
+              <div class="dash-flag-row warn">
+                <div class="dfr-icon">📋</div>
+                <div class="dfr-body">
+                  <div class="dfr-title">12 patients with open needs — no referral initiated</div>
+                  <div class="dfr-sub">Needs identified but referral not sent within 7-day window</div>
+                </div>
+                <span class="dfr-badge warn">Follow-up</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Provider leaderboard + SDOH screening rates -->
+          <div class="dash-card">
+            <div class="dash-card-title">👩‍⚕️ Provider Activity & SDOH Screening Rate</div>
+            <table class="provider-table">
+              <thead><tr><th>Provider</th><th>Dept.</th><th>Referrals</th><th>Screen Rate</th><th>Outcome Score</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><strong>Dr. J. Chen</strong></td><td>OB/GYN</td><td>62</td>
+                  <td><div class="mini-bar-wrap"><div class="mini-bar" style="width:88%"></div><span>88%</span></div></td>
+                  <td><span class="net-badge green">4.7/5</span></td>
+                </tr>
+                <tr>
+                  <td><strong>L. Torres, MSW</strong></td><td>Social Work</td><td>54</td>
+                  <td><div class="mini-bar-wrap"><div class="mini-bar" style="width:95%"></div><span>95%</span></div></td>
+                  <td><span class="net-badge green">4.9/5</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Dr. R. Patel</strong></td><td>Internal Med</td><td>41</td>
+                  <td><div class="mini-bar-wrap"><div class="mini-bar" style="width:61%"></div><span>61%</span></div></td>
+                  <td><span class="net-badge yellow">3.8/5</span></td>
+                </tr>
+                <tr>
+                  <td><strong>R. Okafor, CNM</strong></td><td>Midwifery</td><td>33</td>
+                  <td><div class="mini-bar-wrap"><div class="mini-bar" style="width:79%"></div><span>79%</span></div></td>
+                  <td><span class="net-badge green">4.5/5</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Dr. M. Singh</strong></td><td>Pediatrics</td><td>28</td>
+                  <td><div class="mini-bar-wrap"><div class="mini-bar" style="width:44%"></div><span>44%</span></div></td>
+                  <td><span class="net-badge yellow">3.6/5</span></td>
+                </tr>
+                <tr>
+                  <td><strong>K. Williams, NP</strong></td><td>Primary Care</td><td>17</td>
+                  <td><div class="mini-bar-wrap"><div class="mini-bar" style="width:72%"></div><span>72%</span></div></td>
+                  <td><span class="net-badge red">2.9/5</span></td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="dash-survey-note" style="margin-top:10px;">📌 Outcome score = avg. patient-reported satisfaction 30 days post-referral · Screen rate = % of eligible encounters with SDOH screen completed</div>
+
+            <div class="dash-card-title" style="margin-top:14px; margin-bottom:8px;">Referral Status Breakdown</div>
             <div class="dash-status-list">
               <div class="dash-status-row"><span class="dst-dot" style="background:#166534;"></span><span class="dst-label">Completed / Resolved</span><span class="dst-val">183</span><span class="dst-pct">74%</span></div>
               <div class="dash-status-row"><span class="dst-dot" style="background:#f59e0b;"></span><span class="dst-label">Pending / In Progress</span><span class="dst-val">42</span><span class="dst-pct">17%</span></div>
               <div class="dash-status-row"><span class="dst-dot" style="background:#2563eb;"></span><span class="dst-label">Sent — Awaiting Intake</span><span class="dst-val">14</span><span class="dst-pct">6%</span></div>
-              <div class="dash-status-row"><span class="dst-dot" style="background:#dc2626;"></span><span class="dst-label">Non-Responsive</span><span class="dst-val">8</span><span class="dst-pct">3%</span></div>
+              <div class="dash-status-row"><span class="dst-dot" style="background:#dc2626;"></span><span class="dst-label">Non-Responsive CBO</span><span class="dst-val">8</span><span class="dst-pct">3%</span></div>
             </div>
-            <div class="dash-card-title" style="margin-top:14px;">Top Referral Senders</div>
-            <div class="dash-sender-list">
-              <div class="dash-sender-row"><span class="dsr-rank">1</span><span class="dsr-name">Dr. Jane Chen, MD — OB/GYN</span><span class="dsr-count">62 referrals</span></div>
-              <div class="dash-sender-row"><span class="dsr-rank">2</span><span class="dsr-name">L. Torres, MSW — Social Work</span><span class="dsr-count">54 referrals</span></div>
-              <div class="dash-sender-row"><span class="dsr-rank">3</span><span class="dsr-name">Dr. R. Patel, MD — Internal Med</span><span class="dsr-count">41 referrals</span></div>
-              <div class="dash-sender-row"><span class="dsr-rank">4</span><span class="dsr-name">R. Okafor, CNM — Midwifery</span><span class="dsr-count">33 referrals</span></div>
+          </div>
+        </div>
+
+        <!-- Row 3: Population trends -->
+        <div class="dash-section-label" style="margin-top:4px;">📈 Longitudinal Trends — Q1 2026</div>
+        <div class="dash-two-col">
+          <div class="dash-card">
+            <div class="dash-card-title">Needs Identified vs. Referrals Sent — Monthly</div>
+            <div class="dash-trend-chart">
+              <div class="dtc-row">
+                <span class="dtc-label">Jan</span>
+                <div class="dtc-bars">
+                  <div class="dtc-bar identified" style="height:62px;" title="74 identified"></div>
+                  <div class="dtc-bar referred" style="height:52px;" title="62 referred"></div>
+                </div>
+                <span class="dtc-val">74 / 62</span>
+              </div>
+              <div class="dtc-row">
+                <span class="dtc-label">Feb</span>
+                <div class="dtc-bars">
+                  <div class="dtc-bar identified" style="height:74px;" title="89 identified"></div>
+                  <div class="dtc-bar referred" style="height:64px;" title="77 referred"></div>
+                </div>
+                <span class="dtc-val">89 / 77</span>
+              </div>
+              <div class="dtc-row">
+                <span class="dtc-label">Mar</span>
+                <div class="dtc-bars">
+                  <div class="dtc-bar identified" style="height:88px;" title="107 identified"></div>
+                  <div class="dtc-bar referred" style="height:76px;" title="91 referred"></div>
+                </div>
+                <span class="dtc-val">107 / 91</span>
+              </div>
+            </div>
+            <div class="dtc-legend"><span class="dtc-leg-dot identified"></span> Needs Identified &nbsp;&nbsp; <span class="dtc-leg-dot referred"></span> Referrals Sent</div>
+            <div class="dash-survey-note" style="margin-top:6px;">📌 Gap between identified needs and referrals sent is narrowing — down from 16% to 12% quarter-over-quarter</div>
+          </div>
+
+          <div class="dash-card">
+            <div class="dash-card-title">Patient Outcome Improvement — Self-Reported (30-Day Follow-Up)</div>
+            <div class="dash-outcome-grid">
+              <div class="dog-item green">
+                <div class="dog-pct">83%</div>
+                <div class="dog-label">Improved access to food or essential services</div>
+              </div>
+              <div class="dog-item green">
+                <div class="dog-pct">71%</div>
+                <div class="dog-label">Reduced social-related stress</div>
+              </div>
+              <div class="dog-item teal">
+                <div class="dog-pct">68%</div>
+                <div class="dog-label">Kept follow-up medical appointment</div>
+              </div>
+              <div class="dog-item teal">
+                <div class="dog-pct">61%</div>
+                <div class="dog-label">Connected with CBO within 7 days of referral</div>
+              </div>
+              <div class="dog-item yellow">
+                <div class="dog-pct">54%</div>
+                <div class="dog-label">Reported improvement in overall wellbeing score</div>
+              </div>
+              <div class="dog-item yellow">
+                <div class="dog-pct">48%</div>
+                <div class="dog-label">Reduced ER utilization in 90 days post-referral</div>
+              </div>
             </div>
           </div>
         </div>
@@ -2358,50 +2616,300 @@
       </div>
     </div>
 
+
     <!-- NETWORK PERFORMANCE TAB -->
     <div id="dpane-net" style="flex:1; display:none; overflow-y:auto; padding:16px;">
-      <div style="font-size:15px; font-weight:800; color:var(--epic-text); margin-bottom:4px;">Network Performance — Closed-Loop Partners</div>
-      <div style="font-size:11px; color:var(--epic-muted); margin-bottom:16px;">Q1 2026 · Midwest Regional Health System</div>
 
-      <div class="dash-two-col" style="margin-bottom:16px;">
-        <div class="dash-kpi" style="flex:1;"><div class="dk-val">38</div><div class="dk-label">Active CBO Partners</div></div>
-        <div class="dash-kpi" style="flex:1;"><div class="dk-val">94%</div><div class="dk-label">Avg. Intake Rate</div><div class="dk-trend up">↑ 3pts</div></div>
-        <div class="dash-kpi" style="flex:1;"><div class="dk-val">3.2d</div><div class="dk-label">Avg. Response Time</div></div>
-        <div class="dash-kpi" style="flex:1;"><div class="dk-val">2</div><div class="dk-label">Non-Responsive Flags</div><div class="dk-trend warn">Review needed</div></div>
+      <!-- Header -->
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:14px;">
+        <div>
+          <div style="font-size:15px; font-weight:800; color:var(--epic-text);">Network Performance — Closed-Loop Partners</div>
+          <div style="font-size:11px; color:var(--epic-muted); margin-top:2px;">Q1 2026 · Midwest Regional Health System · Chicago, IL</div>
+        </div>
+        <div style="margin-left:auto; display:flex; gap:8px;">
+          <div class="dash-export-btn-wrap">
+            <button class="net-action-btn" onclick="toggleNetExport()">📥 Export ▾</button>
+            <div class="dash-export-dd" id="net-export-dd">
+              <div class="dash-export-item" onclick="exportAction('PDF Network Report')">📄 PDF Network Report</div>
+              <div class="dash-export-item" onclick="exportAction('Excel Partner Data')">📊 Excel (.xlsx)</div>
+              <div class="dash-export-item" onclick="exportAction('CSV Partner List')">📋 CSV Partner List</div>
+              <div class="dash-export-item" onclick="exportAction('JSON / API Feed')">🔗 JSON / API Feed</div>
+              <div class="dash-export-item" onclick="exportAction('Word Summary')">📑 Word Summary</div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- Top partners table -->
+      <!-- KPI row -->
+      <div class="dash-kpi-row" style="margin-bottom:14px;">
+        <div class="dash-kpi"><div class="dk-val">38</div><div class="dk-label">Active CBO Partners</div><div class="dk-trend up">↑ 5 new Q1</div></div>
+        <div class="dash-kpi highlight"><div class="dk-val teal">94%</div><div class="dk-label">Avg. Intake Rate</div><div class="dk-trend up">↑ 3pts vs Q4</div></div>
+        <div class="dash-kpi"><div class="dk-val">3.2d</div><div class="dk-label">Avg. Response Time</div><div class="dk-trend up">↓ 0.8d faster</div></div>
+        <div class="dash-kpi"><div class="dk-val">247</div><div class="dk-label">Total Referrals Routed</div><div class="dk-trend up">↑ 18%</div></div>
+        <div class="dash-kpi"><div class="dk-val warn-val">2</div><div class="dk-label">Non-Responsive Flags</div><div class="dk-trend warn">⚠ Review</div></div>
+        <div class="dash-kpi"><div class="dk-val">6</div><div class="dk-label">Need Types Covered</div><div class="dk-trend">— Full coverage</div></div>
+      </div>
+
+      <!-- Map + Partner breakdown side by side -->
+      <div class="dash-two-col" style="margin-bottom:14px; align-items:stretch;">
+
+        <!-- SVG Partner Map -->
+        <div class="dash-card" style="flex:1.2; min-width:0;">
+          <div class="dash-card-title">🗺 Partner Network Map — Chicago Metro</div>
+          <div style="position:relative; background:#e8f4f8; border-radius:8px; overflow:hidden; border:1px solid var(--epic-border);">
+            <svg viewBox="0 0 420 320" xmlns="http://www.w3.org/2000/svg" style="width:100%; display:block; font-family:'IBM Plex Sans',sans-serif;">
+              <!-- Background grid / streets suggestion -->
+              <rect width="420" height="320" fill="#eef5f7"/>
+              <!-- Lake Michigan suggestion (right side) -->
+              <rect x="360" y="0" width="60" height="320" fill="#c8e6f0" opacity="0.6"/>
+              <text x="375" y="160" fill="#6bafc8" font-size="8" transform="rotate(90,375,160)" text-anchor="middle" opacity="0.7">Lake Michigan</text>
+              <!-- Street grid lines -->
+              <line x1="0" y1="80" x2="360" y2="80" stroke="#d4e4ea" stroke-width="1" stroke-dasharray="3,4"/>
+              <line x1="0" y1="160" x2="360" y2="160" stroke="#d4e4ea" stroke-width="1" stroke-dasharray="3,4"/>
+              <line x1="0" y1="240" x2="360" y2="240" stroke="#d4e4ea" stroke-width="1" stroke-dasharray="3,4"/>
+              <line x1="80" y1="0" x2="80" y2="320" stroke="#d4e4ea" stroke-width="1" stroke-dasharray="3,4"/>
+              <line x1="160" y1="0" x2="160" y2="320" stroke="#d4e4ea" stroke-width="1" stroke-dasharray="3,4"/>
+              <line x1="240" y1="0" x2="240" y2="320" stroke="#d4e4ea" stroke-width="1" stroke-dasharray="3,4"/>
+              <line x1="320" y1="0" x2="320" y2="320" stroke="#d4e4ea" stroke-width="1" stroke-dasharray="3,4"/>
+              <!-- Major roads -->
+              <line x1="0" y1="140" x2="360" y2="140" stroke="#c8d8de" stroke-width="2.5"/>
+              <line x1="200" y1="0" x2="200" y2="320" stroke="#c8d8de" stroke-width="2.5"/>
+              <text x="4" y="137" fill="#8aabbc" font-size="7">Chicago Ave</text>
+              <text x="202" y="10" fill="#8aabbc" font-size="7">Michigan Ave</text>
+
+              <!-- HOSPITAL — anchor -->
+              <circle cx="210" cy="148" r="14" fill="#1e3a5f" stroke="white" stroke-width="2.5"/>
+              <text x="210" y="145" fill="white" font-size="9" font-weight="800" text-anchor="middle">✚</text>
+              <text x="210" y="154" fill="white" font-size="5.5" font-weight="700" text-anchor="middle">MRH</text>
+
+              <!-- Connection lines from hospital to partners -->
+              <line x1="210" y1="148" x2="130" y2="220" stroke="#0D6B6E" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.5"/>
+              <line x1="210" y1="148" x2="285" y2="240" stroke="#0D6B6E" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.5"/>
+              <line x1="210" y1="148" x2="80" y2="170" stroke="#0D6B6E" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.5"/>
+              <line x1="210" y1="148" x2="160" y2="60" stroke="#0D6B6E" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.5"/>
+              <line x1="210" y1="148" x2="300" y2="80" stroke="#0D6B6E" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.5"/>
+              <line x1="210" y1="148" x2="55" y2="90" stroke="#f59e0b" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.5"/>
+              <line x1="210" y1="148" x2="310" y2="190" stroke="#0D6B6E" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.5"/>
+
+              <!-- Partner pins — green = active, yellow = review, red = flag -->
+              <!-- Chicago Food Pantry Network -->
+              <circle cx="130" cy="220" r="9" fill="#0D6B6E" stroke="white" stroke-width="1.5"/>
+              <text x="130" y="224" fill="white" font-size="8" text-anchor="middle">🍎</text>
+              <rect x="95" y="231" width="74" height="12" rx="3" fill="white" opacity="0.85"/>
+              <text x="132" y="240" fill="#0D6B6E" font-size="7" font-weight="700" text-anchor="middle">Food Pantry Network</text>
+              <text x="130" y="213" fill="#166534" font-size="6.5" font-weight="700" text-anchor="middle">2.1 mi · 97%</text>
+
+              <!-- Chicago Maternal Health Collective -->
+              <circle cx="285" cy="240" r="9" fill="#0D6B6E" stroke="white" stroke-width="1.5"/>
+              <text x="285" y="244" fill="white" font-size="8" text-anchor="middle">🚌</text>
+              <rect x="245" y="251" width="82" height="12" rx="3" fill="white" opacity="0.85"/>
+              <text x="286" y="260" fill="#0D6B6E" font-size="7" font-weight="700" text-anchor="middle">Maternal Health Collective</text>
+              <text x="285" y="233" fill="#166534" font-size="6.5" font-weight="700" text-anchor="middle">3.8 mi · 95%</text>
+
+              <!-- Midwest Regional NEMT (in-system) -->
+              <circle cx="80" cy="170" r="9" fill="#4A9B8E" stroke="white" stroke-width="1.5"/>
+              <text x="80" y="174" fill="white" font-size="8" text-anchor="middle">🚌</text>
+              <rect x="42" y="181" width="78" height="12" rx="3" fill="white" opacity="0.85"/>
+              <text x="81" y="190" fill="#0D6B6E" font-size="7" font-weight="700" text-anchor="middle">MRH NEMT (In-system)</text>
+              <text x="80" y="163" fill="#166534" font-size="6.5" font-weight="700" text-anchor="middle">In-system · 100%</text>
+
+              <!-- WIC -->
+              <circle cx="160" cy="60" r="9" fill="#f59e0b" stroke="white" stroke-width="1.5"/>
+              <text x="160" y="64" fill="white" font-size="8" text-anchor="middle">🍎</text>
+              <rect x="122" y="45" width="76" height="12" rx="3" fill="white" opacity="0.85"/>
+              <text x="160" y="54" fill="#92400e" font-size="7" font-weight="700" text-anchor="middle">WIC — IL DHS (Review)</text>
+              <text x="160" y="38" fill="#92400e" font-size="6.5" font-weight="700" text-anchor="middle">6.7 mi · 88% ⚠</text>
+
+              <!-- Greater Chicago Mutual Aid -->
+              <circle cx="300" cy="80" r="9" fill="#0D6B6E" stroke="white" stroke-width="1.5"/>
+              <text x="300" y="84" fill="white" font-size="8" text-anchor="middle">🍎</text>
+              <rect x="262" y="66" width="76" height="12" rx="3" fill="white" opacity="0.85"/>
+              <text x="300" y="75" fill="#0D6B6E" font-size="7" font-weight="700" text-anchor="middle">Greater Chicago Mutual Aid</text>
+              <text x="300" y="60" fill="#166534" font-size="6.5" font-weight="700" text-anchor="middle">4.3 mi · 92%</text>
+
+              <!-- CTA Reduced Fare — non-responsive -->
+              <circle cx="55" cy="90" r="9" fill="#dc2626" stroke="white" stroke-width="1.5"/>
+              <text x="55" y="94" fill="white" font-size="8" text-anchor="middle">🚌</text>
+              <rect x="18" y="100" width="74" height="12" rx="3" fill="white" opacity="0.85"/>
+              <text x="55" y="109" fill="#991b1b" font-size="7" font-weight="700" text-anchor="middle">CTA Reduced Fare ⚠</text>
+              <text x="55" y="83" fill="#991b1b" font-size="6.5" font-weight="700" text-anchor="middle">Virtual · 61% ✗</text>
+
+              <!-- St. Agatha -->
+              <circle cx="310" cy="190" r="9" fill="#0D6B6E" stroke="white" stroke-width="1.5"/>
+              <text x="310" y="194" fill="white" font-size="8" text-anchor="middle">🍎</text>
+              <rect x="274" y="200" width="72" height="12" rx="3" fill="white" opacity="0.85"/>
+              <text x="310" y="209" fill="#0D6B6E" font-size="7" font-weight="700" text-anchor="middle">St. Agatha Pantry</text>
+              <text x="310" y="183" fill="#166534" font-size="6.5" font-weight="700" text-anchor="middle">1.4 mi · 91%</text>
+
+              <!-- Legend -->
+              <rect x="4" y="275" width="200" height="40" rx="4" fill="white" opacity="0.9" stroke="#b2dfdb" stroke-width="0.5"/>
+              <circle cx="16" cy="285" r="5" fill="#0D6B6E"/>
+              <text x="24" y="289" fill="#1a1a2e" font-size="7">Active Partner</text>
+              <circle cx="16" cy="298" r="5" fill="#f59e0b"/>
+              <text x="24" y="302" fill="#1a1a2e" font-size="7">Review Needed</text>
+              <circle cx="90" cy="285" r="5" fill="#dc2626"/>
+              <text x="98" y="289" fill="#1a1a2e" font-size="7">Non-Responsive</text>
+              <circle cx="90" cy="298" r="5" fill="#1e3a5f"/>
+              <text x="98" y="302" fill="#1a1a2e" font-size="7">Hospital Anchor</text>
+            </svg>
+          </div>
+          <div class="dash-survey-note" style="margin-top:6px;">📌 Distances measured from Midwest Regional Health main campus · 2400 N. Lakeshore Drive</div>
+        </div>
+
+        <!-- Partner breakdown right panel -->
+        <div style="flex:1; display:flex; flex-direction:column; gap:12px; min-width:0;">
+
+          <!-- Need type coverage -->
+          <div class="dash-card" style="flex:0 0 auto;">
+            <div class="dash-card-title">🔗 Coverage by Need Type</div>
+            <div style="display:flex; flex-direction:column; gap:5px;">
+              <div class="net-cov-row"><span class="net-cov-need">🍎 Food Insecurity</span><span class="net-cov-count">12 partners</span><div class="net-cov-bar-wrap"><div class="net-cov-bar" style="width:100%;"></div></div></div>
+              <div class="net-cov-row"><span class="net-cov-need">🚌 Transportation</span><span class="net-cov-count">8 partners</span><div class="net-cov-bar-wrap"><div class="net-cov-bar" style="width:67%;"></div></div></div>
+              <div class="net-cov-row"><span class="net-cov-need">🏠 Housing</span><span class="net-cov-count">6 partners</span><div class="net-cov-bar-wrap"><div class="net-cov-bar" style="width:50%; background:#4A9B8E;"></div></div></div>
+              <div class="net-cov-row"><span class="net-cov-need">💊 Medication</span><span class="net-cov-count">5 partners</span><div class="net-cov-bar-wrap"><div class="net-cov-bar" style="width:42%; background:#6b9e9f;"></div></div></div>
+              <div class="net-cov-row"><span class="net-cov-need">🧠 Mental Health</span><span class="net-cov-count">4 partners</span><div class="net-cov-bar-wrap"><div class="net-cov-bar" style="width:33%; background:#94b8b9;"></div></div></div>
+              <div class="net-cov-row"><span class="net-cov-need">👶 Childcare</span><span class="net-cov-count">3 partners</span><div class="net-cov-bar-wrap"><div class="net-cov-bar" style="width:25%; background:#b2cfcf;"></div></div></div>
+            </div>
+          </div>
+
+          <!-- Response time breakdown -->
+          <div class="dash-card" style="flex:0 0 auto;">
+            <div class="dash-card-title">⏱ Response Time Distribution</div>
+            <div style="display:flex; gap:8px; justify-content:space-between;">
+              <div class="rt-bucket green"><div class="rt-val">18</div><div class="rt-label">Same Day<br>&lt; 24 hrs</div></div>
+              <div class="rt-bucket teal"><div class="rt-val">11</div><div class="rt-label">1–3 Days</div></div>
+              <div class="rt-bucket yellow"><div class="rt-val">6</div><div class="rt-label">4–7 Days</div></div>
+              <div class="rt-bucket red"><div class="rt-val">3</div><div class="rt-label">&gt; 7 Days</div></div>
+            </div>
+          </div>
+
+          <!-- Quarter-over-quarter -->
+          <div class="dash-card" style="flex:0 0 auto;">
+            <div class="dash-card-title">📈 QoQ Network Growth</div>
+            <div style="display:flex; flex-direction:column; gap:5px; font-size:11px;">
+              <div class="qoq-row"><span class="qoq-label">Partners onboarded</span><span class="qoq-val up">+5 ↑</span></div>
+              <div class="qoq-row"><span class="qoq-label">Intake rate</span><span class="qoq-val up">+3pts ↑</span></div>
+              <div class="qoq-row"><span class="qoq-label">Avg response time</span><span class="qoq-val up">-0.8d ↑</span></div>
+              <div class="qoq-row"><span class="qoq-label">Referrals routed</span><span class="qoq-val up">+18% ↑</span></div>
+              <div class="qoq-row"><span class="qoq-label">Non-responsive flags</span><span class="qoq-val warn">+1 ⚠</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Full partner performance table -->
       <div class="dash-card" style="margin-bottom:14px;">
-        <div class="dash-card-title">Top Performing Closed-Loop Partners</div>
+        <div class="dash-card-title">📋 Full Partner Performance Scorecard — Q1 2026</div>
         <table class="net-table">
-          <thead><tr><th>Partner Organization</th><th>Need Type</th><th>Referrals Recv.</th><th>Intake Rate</th><th>Avg. Response</th><th>Status</th></tr></thead>
+          <thead>
+            <tr>
+              <th>Partner Organization</th>
+              <th>Need Type</th>
+              <th>Distance</th>
+              <th>Referrals Recv.</th>
+              <th>Intake Rate</th>
+              <th>Avg. Response</th>
+              <th>Patient Satisfaction</th>
+              <th>Trend</th>
+              <th>Status</th>
+            </tr>
+          </thead>
           <tbody>
-            <tr><td><strong>Chicago Food Pantry Network</strong></td><td>🍎 Food</td><td>68</td><td><span class="net-badge green">97%</span></td><td>1.2d</td><td><span class="net-badge green">Active</span></td></tr>
-            <tr><td><strong>Chicago Maternal Health Collective</strong></td><td>🚌 Transport</td><td>54</td><td><span class="net-badge green">95%</span></td><td>2.1d</td><td><span class="net-badge green">Active</span></td></tr>
-            <tr><td><strong>Midwest Regional NEMT</strong></td><td>🚌 Transport</td><td>49</td><td><span class="net-badge green">100%</span></td><td>0.5d</td><td><span class="net-badge green">Active</span></td></tr>
-            <tr><td><strong>WIC — IL Dept. Human Services</strong></td><td>🍎 Food</td><td>38</td><td><span class="net-badge yellow">88%</span></td><td>4.3d</td><td><span class="net-badge yellow">Review</span></td></tr>
-            <tr><td><strong>Greater Chicago Mutual Aid</strong></td><td>🍎 Food</td><td>27</td><td><span class="net-badge green">92%</span></td><td>2.8d</td><td><span class="net-badge green">Active</span></td></tr>
-            <tr><td><strong>St. Agatha Community Pantry</strong></td><td>🍎 Food</td><td>22</td><td><span class="net-badge green">91%</span></td><td>1.9d</td><td><span class="net-badge green">Active</span></td></tr>
-            <tr><td><strong>CTA Reduced Fare Program</strong></td><td>🚌 Transport</td><td>18</td><td><span class="net-badge red">61%</span></td><td>7.1d</td><td><span class="net-badge red">⚠ Non-Responsive</span></td></tr>
+            <tr>
+              <td><strong>Chicago Food Pantry Network</strong></td>
+              <td>🍎 Food</td><td>2.1 mi</td><td>68</td>
+              <td><span class="net-badge green">97%</span></td>
+              <td>1.2d</td>
+              <td><span class="net-badge green">4.8/5</span></td>
+              <td class="trend-up">↑ Improving</td>
+              <td><span class="net-badge green">Active</span></td>
+            </tr>
+            <tr>
+              <td><strong>Chicago Maternal Health Collective</strong></td>
+              <td>🚌 Transport</td><td>3.8 mi</td><td>54</td>
+              <td><span class="net-badge green">95%</span></td>
+              <td>2.1d</td>
+              <td><span class="net-badge green">4.6/5</span></td>
+              <td class="trend-up">↑ Improving</td>
+              <td><span class="net-badge green">Active</span></td>
+            </tr>
+            <tr>
+              <td><strong>Midwest Regional NEMT</strong></td>
+              <td>🚌 Transport</td><td>In-system</td><td>49</td>
+              <td><span class="net-badge green">100%</span></td>
+              <td>0.5d</td>
+              <td><span class="net-badge green">4.9/5</span></td>
+              <td class="trend-stable">→ Stable</td>
+              <td><span class="net-badge green">Active</span></td>
+            </tr>
+            <tr>
+              <td><strong>WIC — IL Dept. of Human Services</strong></td>
+              <td>🍎 Food</td><td>6.7 mi</td><td>38</td>
+              <td><span class="net-badge yellow">88%</span></td>
+              <td>4.3d</td>
+              <td><span class="net-badge yellow">3.7/5</span></td>
+              <td class="trend-down">↓ Slowing</td>
+              <td><span class="net-badge yellow">Review</span></td>
+            </tr>
+            <tr>
+              <td><strong>Greater Chicago Mutual Aid</strong></td>
+              <td>🍎 Food</td><td>4.3 mi</td><td>27</td>
+              <td><span class="net-badge green">92%</span></td>
+              <td>2.8d</td>
+              <td><span class="net-badge green">4.4/5</span></td>
+              <td class="trend-up">↑ Improving</td>
+              <td><span class="net-badge green">Active</span></td>
+            </tr>
+            <tr>
+              <td><strong>St. Agatha Community Pantry</strong></td>
+              <td>🍎 Food</td><td>1.4 mi</td><td>22</td>
+              <td><span class="net-badge green">91%</span></td>
+              <td>1.9d</td>
+              <td><span class="net-badge green">4.5/5</span></td>
+              <td class="trend-stable">→ Stable</td>
+              <td><span class="net-badge green">Active</span></td>
+            </tr>
+            <tr>
+              <td><strong>Chicago Early Learning / Head Start</strong></td>
+              <td>👶 Childcare</td><td>2.8 mi</td><td>14</td>
+              <td><span class="net-badge green">93%</span></td>
+              <td>2.2d</td>
+              <td><span class="net-badge green">4.3/5</span></td>
+              <td class="trend-up">↑ New partner</td>
+              <td><span class="net-badge green">Active</span></td>
+            </tr>
+            <tr>
+              <td><strong>IL Medicaid Rideshare — Lyft Health</strong></td>
+              <td>🚌 Transport</td><td>Virtual</td><td>21</td>
+              <td><span class="net-badge green">89%</span></td>
+              <td>1.0d</td>
+              <td><span class="net-badge yellow">3.9/5</span></td>
+              <td class="trend-stable">→ Stable</td>
+              <td><span class="net-badge green">Active</span></td>
+            </tr>
+            <tr style="background:#fff5f5;">
+              <td><strong>CTA Reduced Fare Program</strong></td>
+              <td>🚌 Transport</td><td>Virtual</td><td>18</td>
+              <td><span class="net-badge red">61%</span></td>
+              <td>7.1d</td>
+              <td><span class="net-badge red">2.1/5</span></td>
+              <td class="trend-down">↓ Declining</td>
+              <td><span class="net-badge red">⚠ Non-Responsive</span></td>
+            </tr>
           </tbody>
         </table>
       </div>
 
+      <!-- Bottom action bar -->
       <div style="display:flex; gap:10px; padding-top:12px; border-top:1px solid var(--gray-200);">
         <button class="net-action-btn" onclick="openRequestService()">➕ Request a Service</button>
         <div class="dash-export-btn-wrap" style="flex:1;">
-          <button class="net-action-btn" style="width:100%;" onclick="toggleExport()">📥 Export ▾</button>
-          <div class="dash-export-dd" id="dash-export-dd">
-            <div class="dash-export-item">📄 PDF Report</div>
-            <div class="dash-export-item">📊 Excel (.xlsx)</div>
-            <div class="dash-export-item">📋 CSV</div>
-            <div class="dash-export-item">🔗 JSON / API</div>
-            <div class="dash-export-item">📑 Word (.docx)</div>
-          </div>
+          <button class="net-action-btn" style="width:100%;" onclick="toggleNetExport()">📥 Export ▾</button>
         </div>
         <button class="net-action-btn" onclick="openFeedback()">💬 Send Feedback</button>
       </div>
     </div>
+
 
   </div>
 </div>
@@ -2780,6 +3288,27 @@
   function toggleExport() {
     const dd = document.getElementById('dash-export-dd');
     if (dd) dd.classList.toggle('open');
+    const nd = document.getElementById('net-export-dd');
+    if (nd) nd.classList.remove('open');
+  }
+
+  function toggleNetExport() {
+    const nd = document.getElementById('net-export-dd');
+    if (nd) nd.classList.toggle('open');
+    const dd = document.getElementById('dash-export-dd');
+    if (dd) dd.classList.remove('open');
+  }
+
+  function exportAction(format) {
+    const toast = document.getElementById('save-toast');
+    toast.textContent = `📥 Exporting as ${format}...`;
+    toast.classList.add('show');
+    setTimeout(() => {
+      toast.textContent = `✓ ${format} exported successfully`;
+      setTimeout(() => toast.classList.remove('show'), 2000);
+    }, 1200);
+    // Close all dropdowns
+    document.querySelectorAll('.dash-export-dd').forEach(d => d.classList.remove('open'));
   }
 
   function openFeedback() {
@@ -2794,11 +3323,10 @@
     document.getElementById(id).style.display = 'none';
   }
 
-  // Close export dropdown on outside click
+  // Close all export dropdowns on outside click
   document.addEventListener('click', function(e) {
     if (!e.target.closest('.dash-export-btn-wrap')) {
-      const dd = document.getElementById('dash-export-dd');
-      if (dd) dd.classList.remove('open');
+      document.querySelectorAll('.dash-export-dd').forEach(d => d.classList.remove('open'));
     }
   });
 
