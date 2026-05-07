@@ -207,8 +207,10 @@
   /* ── CENTER / RIGHT AREA ── */
   .epic-content {
     flex: 1;
-    overflow-y: auto;
+    overflow: hidden;
     background: #eef2f8;
+    display: flex;
+    flex-direction: column;
   }
 
   /* ── FRAME 1: EHR OVERVIEW ── */
@@ -220,6 +222,7 @@
     flex: 1;
     padding: 12px;
     overflow-y: auto;
+    min-height: 0;
   }
   .ehr-section-header {
     background: var(--epic-blue);
@@ -342,8 +345,15 @@
   /* ── FRAME 2: SPLIT EHR + HL PLATFORM ── */
   #frame-platform {
     display: none;
-    height: 100%;
+    flex: 1;
+    min-height: 0;
     position: relative;
+  }
+  #frame-ehr {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
   }
   .platform-left {
     width: 33%;
@@ -362,9 +372,13 @@
     display: flex;
     flex-direction: column;
     background: var(--gray-50);
-    overflow: hidden;
+    overflow-y: auto;
     position: relative;
     z-index: 1;
+    min-height: 0;
+  }
+  .hl-tab-content {
+    padding: 16px 16px 48px;
   }
   /* Expanded overlay state — HL panel slides over chart */
   .platform-right.expanded {
@@ -460,13 +474,10 @@
   }
 
   /* ── TAB CONTENT ── */
-  .hl-tab-content {
-    flex: 1;
-    overflow-y: auto;
-    padding: 16px;
-  }
   .tab-pane { display: none; }
   .tab-pane.active { display: block; }
+  #ref-state-0, #ref-state-1, #ref-state-2, #ref-state-3 { margin: 0; }
+  .dir-actions-bar { flex-shrink: 0; }
 
   /* ── SDOH INTAKE STATES ── */
   /* State 0: Initial */
@@ -966,7 +977,7 @@
   .btn-closed-loop:hover { background:#0a5558; }
 
   /* PDF Preview */
-  .pdf-preview-wrap { background:#e4eaf2; padding:12px; border-radius:8px; }
+  .pdf-preview-wrap { background:#e4eaf2; padding:12px 12px 24px; border-radius:8px; overflow-y: visible; }
   .pdf-hospital-logo { width:56px; height:56px; background:linear-gradient(135deg,#1e3a5f,#2c5282); border-radius:10px; display:flex; flex-direction:column; align-items:center; justify-content:center; flex-shrink:0; box-shadow:0 2px 8px rgba(30,58,95,0.3); }
   .pdf-hosp-cross { font-size:16px; color:#7ec8f0; line-height:1; }
   .pdf-hosp-initials { font-size:11px; font-weight:800; color:white; letter-spacing:0.06em; line-height:1.2; }
@@ -1400,7 +1411,7 @@
   <div class="epic-content">
 
     <!-- FRAME 1: EHR OVERVIEW + HL LAUNCH -->
-    <div id="frame-ehr" style="display:flex; height:100%;">
+    <div id="frame-ehr" style="display:flex;">
       <div class="ehr-chart-main">
 
         <div class="ehr-section-header">🩺 Today's Encounter — OB/GYN Prenatal Visit (28 wks)</div>
@@ -1678,7 +1689,7 @@
                   <span style="font-size:9px;color:#7ee8d8;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-left:auto;">Follow-Up Survey</span>
                 </div>
                 <div style="padding:12px 14px;">
-                  <div style="font-size:11px;color:var(--epic-muted);margin-bottom:10px;line-height:1.5;">Schedule a 30-day follow-up outcomes assessment for this patient to measure whether identified social needs were resolved. Results feed into the HealthInsights population dashboard.</div>
+                  <div style="font-size:11px;color:var(--epic-muted);margin-bottom:10px;line-height:1.5;">Schedule a follow-up outcomes assessment for this patient to measure whether identified social needs were resolved. Results feed into the HealthInsights population dashboard.</div>
                   <div style="display:flex;gap:8px;">
                     <button onclick="scheduleOutcomesAssessment('auto')" style="flex:1;background:var(--hl-teal);color:white;border:none;padding:8px 12px;border-radius:5px;font-size:11px;font-weight:700;cursor:pointer;font-family:'IBM Plex Sans',sans-serif;transition:background .15s;" onmouseover="this.style.background='#0a5558'" onmouseout="this.style.background='var(--hl-teal)'">
                       📅 Auto-Schedule (30 days)
@@ -1731,7 +1742,7 @@
             </div>
 
             <!-- REFERRAL STATE 1: Directory -->
-            <div id="ref-state-1" style="display:none;">
+            <div id="ref-state-1" style="display:none;height:0;overflow:hidden;padding:0;margin:0;">
 
               <!-- Filters — all dropdowns -->
               <div class="dir-filters-wrap">
@@ -1818,6 +1829,7 @@
               </div>
 
               <!-- Dynamic needs sections injected here -->
+              <div style="overflow-y:auto;max-height:calc(100vh - 280px);min-height:200px;" id="dir-scroll-area">
               <div id="dir-dynamic-needs"></div>
 
               <!-- Directory Results -->
@@ -1962,6 +1974,7 @@
                 </div>
 
               </div><!-- end dir-results -->
+              </div><!-- end dir-scroll-area -->
 
               <div class="dir-actions-bar">
                 <button class="btn-print-list" onclick="refState(2)">🖨 Generate Printable List</button>
@@ -1970,7 +1983,7 @@
             </div><!-- end ref-state-1 -->
 
             <!-- REFERRAL STATE 2: Printable PDF Preview -->
-            <div id="ref-state-2" style="display:none;">
+            <div id="ref-state-2" style="display:none;height:0;overflow:hidden;padding:0;margin:0;">
               <div class="pdf-preview-wrap">
                 <div class="pdf-back-bar">
                   <button class="screener-back-btn" onclick="refState(1)">← Back to Directory</button>
@@ -2110,11 +2123,17 @@
                   <button class="btn-print-center" onclick="window.print()">🖨 Print / Save as PDF</button>
                 </div>
 
+              </div><!-- end pdf-preview-wrap -->
+
+              <!-- STICKY BOTTOM ACTION BAR -->
+              <div style="position:sticky; bottom:0; background:var(--gray-50); border-top:1px solid var(--border); padding:12px 0; text-align:center; margin-top:8px;">
+                <button class="btn-print-center" onclick="window.print()">🖨 Print / Save as PDF</button>
               </div>
             </div><!-- end ref-state-2 -->
 
             <!-- REFERRAL STATE 3: Closed-Loop Send -->
-            <div id="ref-state-3" style="display:none;">
+            <div id="ref-state-3" style="display:none;height:0;overflow:hidden;padding:0;margin:0;">
+              <div style="padding-bottom:24px;">
               <div class="cl-intro-row">
                 <button class="screener-back-btn" onclick="refState(1)">← Back</button>
                 <div class="cl-intro-title">Send Closed-Loop Referrals</div>
@@ -2139,7 +2158,7 @@
                     <div class="clf-header">Referral to: Chicago Food Pantry Network</div>
                     <div class="clf-section">
                       <div class="clf-label">Patient</div>
-                      <div class="clf-val">Maria Washington · MRN-8847291 · DOB 03/14/1987 · (773) 555-0194</div>
+                      <div class="clf-val">Maria Washington · (773) 555-0194</div>
                     </div>
                     <div class="clf-section">
                       <div class="clf-label">Referring Provider</div>
@@ -2201,7 +2220,7 @@
                     <div class="clf-header">Referral to: Midwest Regional NEMT</div>
                     <div class="clf-section">
                       <div class="clf-label">Patient</div>
-                      <div class="clf-val">Maria Washington · MRN-8847291 · DOB 03/14/1987 · (773) 555-0194</div>
+                      <div class="clf-val">Maria Washington · (773) 555-0194</div>
                     </div>
                     <div class="clf-section">
                       <div class="clf-label">Referring Provider</div>
@@ -2244,7 +2263,7 @@
                     <div class="clf-header">Referral to: WIC — IL Dept. of Human Services</div>
                     <div class="clf-section">
                       <div class="clf-label">Patient</div>
-                      <div class="clf-val">Maria Washington · MRN-8847291 · DOB 03/14/1987</div>
+                      <div class="clf-val">Maria Washington · (773) 555-0194</div>
                     </div>
                     <div class="clf-section">
                       <div class="clf-label">Additional Notes</div>
@@ -2256,7 +2275,8 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div><!-- end cl-tiles -->
+              </div><!-- end inner padding wrapper -->
             </div><!-- end ref-state-3 -->
 
           </div><!-- end pane-referrals -->
@@ -2265,7 +2285,7 @@
           <div class="tab-pane" id="pane-outcomes">
             <div class="outcomes-header">
               <div class="outcomes-title">Outcomes Tracker</div>
-              <div class="outcomes-sub">Maria Washington · MRN-8847291 · As of 05/03/2026</div>
+              <div class="outcomes-sub">Maria Washington · MRN-8847291 · <span id="outcomes-timestamp"></span></div>
             </div>
             <div class="outcomes-grid">
               <div class="outcomes-card sent">
@@ -2283,10 +2303,10 @@
                 <div class="oc-label">Needs Resolved</div>
                 <div class="oc-val">0</div>
               </div>
-              <div class="outcomes-card" style="border-color:#dc2626;">
+              <div class="outcomes-card" style="border-color:#dc2626;" id="followup-card">
                 <div class="oc-icon">⚠️</div>
                 <div class="oc-label">Follow-Ups Due</div>
-                <div class="oc-val" style="color:#dc2626;">1</div>
+                <div class="oc-val" style="color:#dc2626;" id="oc-followup">1</div>
               </div>
             </div>
 
@@ -2347,7 +2367,7 @@
                   <textarea class="msg-reply-input" placeholder="Type a reply..."></textarea>
                   <div style="display:flex;gap:8px;margin-top:8px;justify-content:flex-end;">
                     <button class="screener-back-btn" onclick="closeRejectionMessage()">Close</button>
-                    <button class="screener-next-btn">Send Reply</button>
+                    <button class="screener-next-btn" onclick="sendRejectionReply()">Send Reply</button>
                   </div>
                 </div>
               </div>
@@ -2460,7 +2480,7 @@
 
           <!-- Needs identified by provider -->
           <div class="dash-card">
-            <div class="dash-card-title">🔍 Social Needs Identified — by Provider & Dept.</div>
+            <div class="dash-card-title">Social Needs Identified</div>
             <div class="dash-bar-chart" style="margin-bottom:10px;">
               <div class="dash-bar-row"><span class="dbr-label">🍎 Food Insecurity</span><div class="dbr-track"><div class="dbr-fill" style="width:82%"></div></div><span class="dbr-val">82</span></div>
               <div class="dash-bar-row"><span class="dbr-label">🚌 Transportation</span><div class="dbr-track"><div class="dbr-fill" style="width:61%"></div></div><span class="dbr-val">61</span></div>
@@ -3224,12 +3244,12 @@
 
   function finishScreener() {
     sdohState(3);
-    // Update status badges
-    document.getElementById('sdoh-status-badge').textContent = 'Needs Identified';
-    document.getElementById('sdoh-status-badge').className = 'demo-badge badge-alert';
-    document.getElementById('sdoh-status-badge-2').textContent = 'Needs Identified';
-    document.getElementById('sdoh-status-badge-2').className = 'demo-badge badge-alert';
-    document.getElementById('needs-summary-left').textContent = 'Food · Transport';
+    const b1 = document.getElementById('sdoh-status-badge');
+    if (b1) { b1.textContent = 'Needs Identified'; b1.className = 'demo-badge badge-alert'; }
+    const b2 = document.getElementById('sdoh-status-badge-2');
+    if (b2) { b2.textContent = 'Needs Identified'; b2.className = 'demo-badge badge-alert'; }
+    const ns = document.getElementById('needs-summary-left');
+    if (ns) ns.textContent = 'Food · Transport';
   }
 
   function removeChip(el) {
@@ -3272,6 +3292,38 @@
     chips.appendChild(chip);
     document.getElementById('add-dropdown').classList.remove('open');
     document.getElementById('add-needs-input').value = '';
+  }
+
+  // ── LIVE TIMESTAMP ──
+  function setOutcomesTimestamp() {
+    const el = document.getElementById('outcomes-timestamp');
+    if (!el) return;
+    const now = new Date();
+    const dateStr = now.toLocaleDateString('en-US', { month:'2-digit', day:'2-digit', year:'numeric' });
+    const timeStr = now.toLocaleTimeString('en-US', { hour:'2-digit', minute:'2-digit' });
+    el.textContent = 'As of ' + dateStr + ' · ' + timeStr;
+  }
+  setOutcomesTimestamp();
+  setInterval(setOutcomesTimestamp, 60000);
+
+  // ── REJECTION REPLY ──
+  function sendRejectionReply() {
+    const textarea = document.querySelector('#reject-modal .msg-reply-input');
+    if (textarea) textarea.value = '';
+    // Clear follow-up counter
+    const followupVal = document.getElementById('oc-followup');
+    const followupCard = document.getElementById('followup-card');
+    if (followupVal) { followupVal.textContent = '0'; followupVal.style.color = 'var(--hl-teal)'; }
+    if (followupCard) followupCard.style.borderColor = 'var(--epic-border)';
+    const badge = document.getElementById('msg-unread-badge');
+    if (badge) badge.style.display = 'none';
+    closeRejectionMessage();
+    const toast = document.getElementById('save-toast');
+    if (toast) {
+      toast.textContent = '✓ Reply sent to Chicago Early Learning';
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2500);
+    }
   }
 
   // ── REJECTION MESSAGE ──
@@ -3486,10 +3538,21 @@
   function refState(n) {
     [0,1,2,3].forEach(i => {
       const el = document.getElementById('ref-state-' + i);
-      if (el) el.style.display = 'none';
+      if (!el) return;
+      el.style.display = 'none';
+      el.style.height = '0';
+      el.style.overflow = 'hidden';
+      el.style.padding = '0';
+      el.style.margin = '0';
     });
     const t = document.getElementById('ref-state-' + n);
-    if (t) t.style.display = 'block';
+    if (t) {
+      t.style.display = 'block';
+      t.style.height = '';
+      t.style.overflow = '';
+      t.style.padding = '';
+      t.style.margin = '';
+    }
   }
 
   function updateSearchBtn() {
@@ -3642,7 +3705,7 @@
     const ocSent = document.getElementById('oc-sent');
     const ocPend = document.getElementById('oc-pending');
     if (ocSent) ocSent.textContent = referralsSent;
-    if (ocPend) ocPend.textContent = referralsSent;
+    if (ocPend) ocPend.textContent = Math.min(referralsSent, 1);
 
     // Add timeline event
     const names = { food: 'Chicago Food Pantry Network', nemt: 'Midwest Regional NEMT', wic: 'WIC — IL Dept. of Human Services' };
