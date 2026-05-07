@@ -1363,6 +1363,11 @@
       <div class="demo-row"><span class="demo-label">I10</span><span class="demo-value">HTN — monitored</span></div>
     </div>
 
+    <div class="demo-section" id="sdoh-zcodes-section" style="display:none;">
+      <div class="demo-section-title" style="color:var(--hl-teal);">Social Needs (SDOH)</div>
+      <div id="sdoh-zcodes-list"></div>
+    </div>
+
     <div class="demo-section">
       <div class="demo-section-title">Encounter</div>
       <div class="demo-row"><span class="demo-label">Date</span><span class="demo-value">05/03/2026</span></div>
@@ -1665,6 +1670,27 @@
               <div class="results-actions">
                 <button class="btn-save" onclick="saveNeeds()">💾 Save Assessment</button>
                 <button class="btn-referrals" onclick="goToReferrals()">🔍 Find Resources →</button>
+              </div>
+
+              <div style="margin-top:16px;background:#f8fafc;border:1.5px solid var(--epic-border);border-radius:8px;overflow:hidden;">
+                <div style="background:var(--hl-charcoal);padding:9px 14px;display:flex;align-items:center;gap:8px;">
+                  <span style="font-size:12px;font-weight:700;color:white;">📊 SDOH Outcomes Assessment</span>
+                  <span style="font-size:9px;color:#7ee8d8;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-left:auto;">Follow-Up Survey</span>
+                </div>
+                <div style="padding:12px 14px;">
+                  <div style="font-size:11px;color:var(--epic-muted);margin-bottom:10px;line-height:1.5;">Schedule a 30-day follow-up outcomes assessment for this patient to measure whether identified social needs were resolved. Results feed into the HealthInsights population dashboard.</div>
+                  <div style="display:flex;gap:8px;">
+                    <button onclick="scheduleOutcomesAssessment('auto')" style="flex:1;background:var(--hl-teal);color:white;border:none;padding:8px 12px;border-radius:5px;font-size:11px;font-weight:700;cursor:pointer;font-family:'IBM Plex Sans',sans-serif;transition:background .15s;" onmouseover="this.style.background='#0a5558'" onmouseout="this.style.background='var(--hl-teal)'">
+                      📅 Auto-Schedule (30 days)
+                    </button>
+                    <button onclick="scheduleOutcomesAssessment('manual')" style="flex:1;background:white;border:1.5px solid var(--hl-teal);color:var(--hl-teal);padding:8px 12px;border-radius:5px;font-size:11px;font-weight:700;cursor:pointer;font-family:'IBM Plex Sans',sans-serif;transition:background .15s;" onmouseover="this.style.background='var(--hl-teal-light)'" onmouseout="this.style.background='white'">
+                      ✏️ Send Manually
+                    </button>
+                  </div>
+                  <div id="outcomes-assessment-status" style="display:none;margin-top:8px;font-size:11px;padding:6px 10px;border-radius:5px;"></div>
+                </div>
+              </div>
+
               </div>
             </div>
 
@@ -2109,7 +2135,7 @@
                   <div class="cl-tile-actions">
                     <button class="cl-expand-btn" onclick="toggleReferralForm('food')">+ Compose Referral</button>
                   </div>
-                  <div class="cl-referral-form" id="clf-food" style="display:none;">
+                  <div class="clf-referral-form" id="clf-food" style="display:none;">
                     <div class="clf-header">Referral to: Chicago Food Pantry Network</div>
                     <div class="clf-section">
                       <div class="clf-label">Patient</div>
@@ -2130,9 +2156,26 @@
                       <span class="clf-tag purple">🤰 Prenatal Patient</span>
                       <span class="clf-tag orange">💊 GDM — Dietary Needs</span>
                     </div>
+                    <div style="background:#e0f2f1;border:1px solid #b2dfdb;border-radius:6px;padding:9px 12px;margin-bottom:8px;font-size:11px;color:#1C2B2D;">
+                      <strong>📅 Service Duration Note:</strong> Home food delivery service is available through 16 weeks postpartum. Delivery will be scheduled from date of referral acceptance through the postpartum window. Please coordinate re-enrollment if service is needed beyond this period.
+                    </div>
                     <div class="clf-section">
                       <div class="clf-label">Additional Notes</div>
                       <textarea class="clf-notes" placeholder="Add clinical notes or special instructions for this referral...">Patient is 28 weeks pregnant with gestational diabetes. Please provide diabetic-friendly food options. Home delivery preferred due to limited transportation. Spanish-language support appreciated.</textarea>
+                    </div>
+                    <div class="clf-section">
+                      <div class="clf-label">Attach Documents</div>
+                      <div style="border:1.5px dashed var(--epic-border);border-radius:6px;padding:12px 14px;background:#f8fafc;">
+                        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+                          <label style="display:inline-flex;align-items:center;gap:6px;background:white;border:1px solid var(--epic-border);border-radius:5px;padding:6px 12px;cursor:pointer;font-size:11px;font-weight:600;color:var(--hl-teal);">
+                            📎 Upload Document
+                            <input type="file" style="display:none;" multiple accept=".pdf,.doc,.docx,.png,.jpg" onchange="handleDocUpload(this)">
+                          </label>
+                          <span style="font-size:10px;color:var(--epic-muted);">PDF, Word, or image · Max 10MB per file</span>
+                        </div>
+                        <div id="doc-upload-list" style="margin-top:8px;display:flex;flex-direction:column;gap:4px;"></div>
+                        <div style="margin-top:6px;font-size:10px;color:var(--epic-muted);font-style:italic;">Suggested: Physician letter of necessity, insurance card, income verification</div>
+                      </div>
                     </div>
                     <div class="clf-btn-row">
                       <button class="btn-save" onclick="saveDraft('food')">💾 Save Draft</button>
@@ -2240,10 +2283,10 @@
                 <div class="oc-label">Needs Resolved</div>
                 <div class="oc-val">0</div>
               </div>
-              <div class="outcomes-card">
-                <div class="oc-icon">🔁</div>
+              <div class="outcomes-card" style="border-color:#dc2626;">
+                <div class="oc-icon">⚠️</div>
                 <div class="oc-label">Follow-Ups Due</div>
-                <div class="oc-val">0</div>
+                <div class="oc-val" style="color:#dc2626;">1</div>
               </div>
             </div>
 
@@ -2260,15 +2303,52 @@
             <!-- Messaging Panel -->
             <div class="outcomes-section-label" style="margin-top:16px;">
               Provider Messaging
-              <span class="msg-unread-badge" id="msg-unread-badge">1 unread</span>
+              <span class="msg-unread-badge" id="msg-unread-badge">2 unread</span>
             </div>
             <div class="msg-panel">
+              <div class="msg-row unread" id="msg-row-reject" onclick="openRejectionMessage()" style="border-left:3px solid #dc2626;">
+                <div class="msg-avatar" style="font-size:18px;">🚨</div>
+                <div class="msg-body">
+                  <div class="msg-from" style="color:#dc2626;">Chicago Early Learning — Head Start <span style="width:8px;height:8px;background:#dc2626;border-radius:50%;display:inline-block;"></span></div>
+                  <div class="msg-preview" style="color:#dc2626;font-weight:600;">Re: Referral Rejected — Action Required</div>
+                  <div class="msg-time">Today 9:18 AM</div>
+                </div>
+              </div>
               <div class="msg-row unread" id="msg-row-1" onclick="openMessage()">
                 <div class="msg-avatar">✉️</div>
                 <div class="msg-body">
                   <div class="msg-from">Chicago Food Pantry Network <span class="msg-unread-dot"></span></div>
                   <div class="msg-preview">Re: Maria Washington referral — Intake confirmed. Delivery scheduled for...</div>
                   <div class="msg-time">Today 10:42 AM</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Rejection Modal -->
+            <div class="msg-modal" id="reject-modal" style="display:none;">
+              <div class="msg-modal-inner">
+                <div class="msg-modal-header" style="background:#991b1b;">
+                  <span>🚨 Referral Rejected — Chicago Early Learning / Head Start</span>
+                  <button class="msg-modal-close" onclick="closeRejectionMessage()">✕</button>
+                </div>
+                <div class="msg-modal-body">
+                  <div class="msg-modal-from"><strong>From:</strong> Enrollment Office, Chicago Early Learning · headstart@chicagoearlylearning.org</div>
+                  <div class="msg-modal-from"><strong>Re:</strong> Patient Referral — Childcare · 05/03/2026</div>
+                  <div style="background:#fee2e2;border:1px solid #fca5a5;border-radius:6px;padding:12px;margin:12px 0;font-size:12px;color:#991b1b;line-height:1.6;">
+                    <strong>⚠ Referral Status: Waitlisted</strong><br><br>
+                    Thank you for submitting a referral for your patient to our Head Start childcare program. Unfortunately we are unable to process this referral at this time.<br><br>
+                    <strong>Reason:</strong> Per program eligibility requirements, applications for childcare enrollment must be submitted after the child's date of birth. Prenatal referrals cannot be accepted into the active queue.<br><br>
+                    We recommend resubmitting this referral following delivery. The patient has been placed on our prenatal waitlist and will be contacted within 30 days of the child's birth to begin the enrollment process.<br><br>
+                    If you have questions please contact our enrollment coordinator directly.
+                  </div>
+                  <div style="background:#fef9ee;border:1px solid #fde68a;border-radius:6px;padding:10px;font-size:11px;color:#92400e;margin-bottom:12px;">
+                    <strong>💡 Suggested Action:</strong> Schedule a follow-up task at 36 weeks to resubmit childcare referral post-delivery. Update patient record with waitlist status.
+                  </div>
+                  <textarea class="msg-reply-input" placeholder="Type a reply..."></textarea>
+                  <div style="display:flex;gap:8px;margin-top:8px;justify-content:flex-end;">
+                    <button class="screener-back-btn" onclick="closeRejectionMessage()">Close</button>
+                    <button class="screener-next-btn">Send Reply</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -3194,6 +3274,95 @@
     document.getElementById('add-needs-input').value = '';
   }
 
+  // ── REJECTION MESSAGE ──
+  function openRejectionMessage() {
+    document.getElementById('reject-modal').style.display = 'flex';
+    const row = document.getElementById('msg-row-reject');
+    if (row) row.style.opacity = '0.7';
+    updateUnreadBadge();
+  }
+  function closeRejectionMessage() {
+    document.getElementById('reject-modal').style.display = 'none';
+  }
+  function updateUnreadBadge() {
+    const r1 = document.getElementById('msg-row-reject');
+    const r2 = document.getElementById('msg-row-1');
+    const unread = [r1, r2].filter(r => r && r.classList.contains('unread') && r.style.opacity !== '0.7').length;
+    const badge = document.getElementById('msg-unread-badge');
+    if (badge) {
+      const rejRead = r1 && r1.style.opacity === '0.7';
+      const foodRead = r2 && !r2.classList.contains('unread');
+      const remaining = (!rejRead ? 1 : 0) + (!foodRead ? 1 : 0);
+      badge.textContent = remaining + ' unread';
+      if (remaining === 0) badge.style.display = 'none';
+    }
+  }
+
+  // ── DOCUMENT UPLOAD ──
+  function handleDocUpload(input) {
+    const list = document.getElementById('doc-upload-list');
+    if (!list) return;
+    Array.from(input.files).forEach(file => {
+      const row = document.createElement('div');
+      row.style.cssText = 'display:flex;align-items:center;gap:8px;padding:5px 8px;background:white;border:1px solid var(--epic-border);border-radius:4px;font-size:11px;';
+      row.innerHTML = `<span>📄</span><span style="flex:1;color:var(--epic-text);">${file.name}</span><span style="color:var(--epic-muted);">${(file.size/1024).toFixed(0)} KB</span><span onclick="this.parentElement.remove()" style="cursor:pointer;color:#94a3b8;padding:0 4px;" title="Remove">✕</span>`;
+      list.appendChild(row);
+    });
+    input.value = '';
+  }
+
+  // ── OUTCOMES ASSESSMENT SCHEDULER ──
+  function scheduleOutcomesAssessment(mode) {
+    const status = document.getElementById('outcomes-assessment-status');
+    if (!status) return;
+    status.style.display = 'block';
+    if (mode === 'auto') {
+      const followDate = new Date('2026-05-03');
+      followDate.setDate(followDate.getDate() + 30);
+      const dateStr = followDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+      status.style.background = '#dcfce7';
+      status.style.color = '#166534';
+      status.style.border = '1px solid #bbf7d0';
+      status.innerHTML = `✅ <strong>Auto-scheduled:</strong> 30-day outcomes follow-up set for <strong>${dateStr}</strong>. Patient will receive a text/email survey link on that date.`;
+    } else {
+      status.style.background = '#dbeafe';
+      status.style.color = '#1e40af';
+      status.style.border = '1px solid #bfdbfe';
+      status.innerHTML = `📤 <strong>Manual send:</strong> Outcomes survey link sent to Maria Washington at (773) 555-0194 and m.washington@email.com.`;
+    }
+  }
+
+  // ── Z-CODE MAP ──
+  const ZCODE_MAP = {
+    'Food Insecurity': { code: 'Z59.41', desc: 'Food insecurity' },
+    'Transportation': { code: 'Z59.82', desc: 'Transportation insecurity' },
+    'Housing Instability': { code: 'Z59.00', desc: 'Homelessness / housing instability' },
+    'Unemployment': { code: 'Z56.0', desc: 'Unemployment' },
+    'Medication Access': { code: 'Z79.899', desc: 'Medication access barrier' },
+    'Childcare': { code: 'Z62.891', desc: 'Childcare need identified' },
+    'Health Literacy': { code: 'Z55.9', desc: 'Health literacy concern' },
+    'Utility Assistance': { code: 'Z59.89', desc: 'Utility/energy insecurity' },
+    'Social Isolation': { code: 'Z60.4', desc: 'Social exclusion/isolation' },
+    'Legal Aid': { code: 'Z65.8', desc: 'Legal concern identified' },
+    'Mental Health': { code: 'Z65.9', desc: 'Psychosocial circumstance' },
+  };
+
+  function injectZCodes(labels) {
+    const section = document.getElementById('sdoh-zcodes-section');
+    const list = document.getElementById('sdoh-zcodes-list');
+    if (!section || !list) return;
+    list.innerHTML = '';
+    labels.forEach(label => {
+      const zc = ZCODE_MAP[label];
+      if (!zc) return;
+      const row = document.createElement('div');
+      row.className = 'demo-row';
+      row.innerHTML = `<span class="demo-label" style="color:var(--hl-teal);font-weight:600;">${zc.code}</span><span class="demo-value">${zc.desc}</span>`;
+      list.appendChild(row);
+    });
+    section.style.display = list.children.length > 0 ? 'block' : 'none';
+  }
+
   function saveNeeds() {
     const chips = document.querySelectorAll('.need-chip');
     const toast = document.getElementById('save-toast');
@@ -3204,11 +3373,18 @@
     const el = document.getElementById('needs-summary-left');
     if (el) el.textContent = labels || 'None';
 
+    // Inject Z-codes into active problems facesheet
+    const needLabels = Array.from(chips).map(c => {
+      const iconEl = c.querySelector('.need-chip-icon');
+      const raw = c.textContent.replace('×','').trim();
+      return iconEl ? raw.replace(iconEl.textContent,'').trim() : raw;
+    });
+    injectZCodes(needLabels);
+
     // Only inject needs that were manually added (have dataset.needLabel set)
-    // Assessment needs (Food Insecurity, Transportation) already have cards in ref-state-0
     chips.forEach(chip => {
       const label = chip.dataset.needLabel;
-      if (!label) return; // no needLabel = came from screener, already shown in ref cards
+      if (!label) return;
       const iconEl = chip.querySelector('.need-chip-icon');
       const icon = iconEl ? iconEl.textContent.trim() : '🔷';
       injectNeedIntoReferrals(icon, label);
